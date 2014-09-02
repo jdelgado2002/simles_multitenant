@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-SimlesMultitenant::Application.config.secret_key_base = '48afb3c48312c2f97a123f2d1f851a482deebcab763cc1c91482936f0d3882f3db6b009bf6d3d19fcb256bd6ef49ff329a6e06426140a06833c4af2eec164561'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+SimlesMultitenant::Application.config.secret_key_base = secure_token
