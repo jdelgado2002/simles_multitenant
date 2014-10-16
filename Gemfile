@@ -24,11 +24,11 @@ group :test do
   # gem 'growl', '1.0.3'
 
   # Uncomment these lines on Linux.
-  # gem 'libnotify', '0.8.0'
+  gem 'libnotify', '0.8.0'
 
   # Uncomment these lines on Windows.
-  gem 'rb-notifu', '0.0.4'
-  gem 'wdm', '0.1.0'
+  #gem 'rb-notifu', '0.0.4'
+  #gem 'wdm', '0.1.0'
   gem 'factory_girl_rails', '4.2.0'
 end
 
